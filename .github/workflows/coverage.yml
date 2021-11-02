@@ -66,9 +66,7 @@ jobs:
         run: |
           cd repo/tests
           pytest --cov=$REPO --cov-report html:../../coverage_html/python .
-          ls -l
-          find ../../coverage_html
-          cat ../../coverage_html/python/.gitignore
+          rm -f ../../coverage_html/python/.gitignore
 
       - name: Setup HTML
         shell: bash -l {0}
@@ -76,7 +74,7 @@ jobs:
           mv html/index.html coverage_html/
 
       - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
+        uses: JamesIves/github-pages-deploy-action@4.1.5
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: coverage_html
+          branch: gh-pages
+          folder: coverage_html

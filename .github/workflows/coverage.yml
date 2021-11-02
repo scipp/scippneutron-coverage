@@ -68,6 +68,7 @@ jobs:
           pytest --cov=$REPO --cov-report html:../../coverage_html/python .
           ls -l
           find ../../coverage_html
+          cat ../../coverage_html/python/.gitignore
 
       - name: Setup HTML
         shell: bash -l {0}

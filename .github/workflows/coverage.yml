@@ -40,8 +40,6 @@ jobs:
 
       - name: Setup conda env file
         run: |
-          # Disable TBB for much faster compilation.
-          cat repo/$REPO-developer.yml | grep -v 'gxx\|tbb' > env.yml
           echo "  - pytest-cov" >> env.yml
 
       - name: Setup Mambaforge and dev env

@@ -40,6 +40,7 @@ jobs:
 
       - name: Setup conda env file
         run: |
+          cp repo/$REPO-developer.yml env.yml
           echo "  - pytest-cov" >> env.yml
 
       - name: Setup Mambaforge and dev env

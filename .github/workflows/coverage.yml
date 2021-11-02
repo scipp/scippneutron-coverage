@@ -65,7 +65,8 @@ jobs:
         shell: bash -l {0}
         run: |
           cd repo/tests
-          pytest --cov=$REPO --cov-report html:../../coverage_html/python .
+          pytest --cov=$REPO --cov-report html .
+          mv -iv htmlcov ../../coverage_html/python
 
       - name: Setup HTML
         shell: bash -l {0}
@@ -77,3 +78,4 @@ jobs:
         with:
           branch: gh-pages
           folder: coverage_html/python
+          single-commit: true

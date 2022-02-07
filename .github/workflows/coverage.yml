@@ -40,16 +40,16 @@ jobs:
 
       - name: Setup conda env file
         run: |
-          cp repo/$REPO-developer.yml env.yml
-          echo "  - pytest-cov" >> env.yml
+          python repo/tools/metatoenv.py --dir=repo/conda --env-file=buildenv.yml --channels=conda-forge,scipp,ess-dmsc
+          echo "  - pytest-cov" >> buildenv.yml
 
       - name: Setup Mambaforge and dev env
         uses: conda-incubator/setup-miniconda@v2.1.1
         with:
           miniforge-version: latest
           miniforge-variant: Mambaforge
-          environment-file: env.yml
-          activate-environment: ${{ env.REPO }}-developer
+          environment-file: buildenv.yml
+          activate-environment: buildenv
           auto-activate-base: false
 
       - name: C++ coverage

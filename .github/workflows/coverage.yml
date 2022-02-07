@@ -40,6 +40,7 @@ jobs:
 
       - name: Setup conda env file
         run: |
+          python repo/tools/metatoenv.py --dir=repo/conda --env-file=buildenv.yml --channels=conda-forge
           cp repo/$REPO-developer.yml env.yml
           echo "  - pytest-cov" >> env.yml
 
@@ -49,7 +50,7 @@ jobs:
           miniforge-version: latest
           miniforge-variant: Mambaforge
           environment-file: env.yml
-          activate-environment: ${{ env.REPO }}-developer
+          activate-environment: buildenv
           auto-activate-base: false
 
       - name: C++ coverage

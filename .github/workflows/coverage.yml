@@ -40,8 +40,7 @@ jobs:
 
       - name: Setup conda env file
         run: |
-          python repo/tools/metatoenv.py --dir=repo/conda --env-file=buildenv.yml --channels=conda-forge
-          cp repo/$REPO-developer.yml env.yml
+          python repo/tools/metatoenv.py --dir=repo/conda --env-file=env.yml --channels=conda-forge
           echo "  - pytest-cov" >> env.yml
 
       - name: Setup Mambaforge and dev env
